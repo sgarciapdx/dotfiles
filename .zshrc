@@ -56,6 +56,7 @@ plugins=(git aws brew lein docker virtualenv vagrant)
 
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
+export GOPATH=$HOME/Code/lang/go
 
 source $ZSH/oh-my-zsh.sh
 
