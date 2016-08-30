@@ -29,8 +29,8 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+# start a terminal - changed from i3-sensible-terminal to gnome-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -175,6 +175,13 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
 exec eval 'ssh-agent -s'
 
+# Requires redshift & redshift-gtk packages
+exec --no-startup-id redshift-gtk
+
+# For easy spacemacs/emacs launching
+exec --no-startup-id emacs --daemon
+bindsym $mod+m exec emacsclient -c
+
 # for home workstation, automatic
 exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x1440 --rotate normal --output DP1 --mode 2560x1440 --pos 0x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
 
@@ -183,7 +190,7 @@ bindsym $mod+Shift+m mode "$monitor_config"
 
 mode "$monitor_config" {
      # w for office workstation
-     bindsym w exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output DP2-1 --off --output DP2-2 --mode 1920x1080 --pos 1928x0 --rotate normal --output DP2-3 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+     bindsym w exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output DP2-1 --off --output DP2-2 --mode 2560x1440 --pos 1928x0 --rotate normal --output DP2-3 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
      # h for home workstation
      bindsym h exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x1440 --rotate normal --output DP1 --mode 2560x1440 --pos 0x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
      bindsym a exec xrandr --auto

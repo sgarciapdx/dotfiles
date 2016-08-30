@@ -54,9 +54,11 @@ plugins=(git aws brew lein docker virtualenv vagrant)
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
 export GOPATH=$HOME/Code/lang/go
+export PATH=$GOPATH/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+# export MANPATH="/usr/local/man:$MANPATH"
+# Adding this for i3-sensible-terminal
+export TERMINAL=gnome-terminal
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,4 +88,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # For rbenv (run 'rbenv init -' for specifics)
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/home/serge/bin/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/home/serge/bin/google-cloud-sdk/completion.zsh.inc'
