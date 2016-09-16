@@ -55,7 +55,7 @@ plugins=(git aws brew lein docker virtualenv vagrant)
 # User configuration
 
 export GOPATH=$HOME/Code/lang/go
-export PATH=$GOPATH/bin:$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH
+export PATH=$GOPATH/bin:$HOME/bin:/usr/local/go/bin:/usr/local/bin:/usr/local/sbin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 # Adding this for i3-sensible-terminal
 export TERMINAL=gnome-terminal
