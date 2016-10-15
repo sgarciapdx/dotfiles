@@ -156,12 +156,13 @@ bar {
 }
 
 # lock screen
-bindsym $mod+Shift+z exec i3lock -c 000000 -d -I 3 
+bindsym $mod+Shift+z exec i3lock -c 000000 -d -I 3
 
-# Pulse Audio controls - using sink #1
+# Pulse Audio controls - using sink #1 for interal audio, source #2 for microphone
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 2 toggle # mute mic
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness

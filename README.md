@@ -14,7 +14,7 @@ i3 i3status dunst xbacklight network-manager-applet
 
 ## nice-to-haves:
 ```
-arandr adobe-source-code-pro-fonts redshift redshift-gtk
+arandr adobe-source-code-pro-fonts redshift redshift-gtk pavucontrol
 ```
 
 ## to use:
