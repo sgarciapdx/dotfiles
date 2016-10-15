@@ -95,3 +95,7 @@ source '/home/serge/bin/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
 source '/home/serge/bin/google-cloud-sdk/completion.zsh.inc'
+
+# Temporary workaround for https://github.com/kubernetes/kubernetes/issues/27538
+# Fix merged into master, should end up in kubectl at some point soon.
+source <(kubectl completion zsh  | grep -v '^autoload .*compinit$')
