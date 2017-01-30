@@ -181,10 +181,10 @@ exec --no-startup-id redshift-gtk
 
 # For easy spacemacs/emacs launching
 exec --no-startup-id emacs --daemon
-bindsym $mod+m exec emacsclient -c
+bindsym $mod+n exec emacsclient -c
 
 # for home workstation, automatic
-exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x1440 --rotate normal --output DP1 --mode 2560x1440 --pos 0x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x1440 --rotate normal --output DP1 --mode 2560x1440 --pos 408x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
 
 set $monitor_config Config monitors: [w]ork [h]ome [a]uto
 bindsym $mod+Shift+m mode "$monitor_config"
@@ -193,7 +193,7 @@ mode "$monitor_config" {
      # w for office workstation
      bindsym w exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output DP2-1 --off --output DP2-2 --mode 2560x1440 --pos 1928x0 --rotate normal --output DP2-3 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
      # h for home workstation
-     bindsym h exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x1440 --rotate normal --output DP1 --mode 2560x1440 --pos 0x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+     bindsym h exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x1440 --rotate normal --output DP1 --mode 2560x1440 --pos 408x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
      bindsym a exec xrandr --auto
 
      # Back to normal mode
