@@ -26,4 +26,4 @@ ln -s /path/to/repo/dotfile /path/to/home/dotfile
 ## notes:
 - some i3 stuff is hardware-specific (batteries, etc.), YMMV
 - ssh config requires OpenSSH 7.2 or newer for AddKeysToAgent
-- `00-keyboard.conf` swaps CapsLock with LeftCtrl and goes in /etc/X11/xorg.conf.d (root:root)
+- `00-keyboard.conf` changes CapsLock to Ctrl and goes in /etc/X11/xorg.conf.d (root:root)
