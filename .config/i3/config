@@ -156,13 +156,25 @@ bar {
 }
 
 # lock screen
-bindsym $mod+Shift+z exec i3lock -c 000000 -d -I 3
+bindsym $mod+Shift+z exec i3lock -c 000000
 
-# Pulse Audio controls - using sink #1 for interal audio, source #2 for microphone
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 1 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 1 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle # mute sound
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute 2 toggle # mute mic
+# lock screen and suspend
+bindsym $mod+Shift+x exec i3lock -c 000000 && systemctl suspend
+
+# PulseAudio controls - using sink and source names instead of indexes
+# because indexes change depending on connected peripherals
+set $audio_sink alsa_output.pci-0000_00_1b.0.analog-stereo
+set $mic_source alsa_input.pci-0000_00_1b.0.analog-stereo
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $audio_sink +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $audio_sink -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $audio_sink toggle # mute sound
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute $mic_source toggle # mute mic
+
+# Add audio controls to all keyboards
+bindsym $mod+n exec --no-startup-id pactl set-sink-mute $audio_sink toggle # mute sound
+bindsym $mod+m exec --no-startup-id pactl set-sink-volume $audio_sink -5% #decrease sound volume
+bindsym $mod+comma exec --no-startup-id pactl set-sink-volume $audio_sink +5% #increase sound volume
+bindsym $mod+period exec --no-startup-id pactl set-source-mute $mic_source 1 # mute mic
 
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
@@ -177,23 +189,26 @@ exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec eval 'ssh-agent -s'
 
 # Requires redshift & redshift-gtk packages
-exec --no-startup-id redshift-gtk
+exec --no-startup-id redshift-gtk -l 45:-122
 
 # For easy spacemacs/emacs launching
 exec --no-startup-id emacs --daemon
-bindsym $mod+n exec emacsclient -c
+bindsym $mod+b exec emacsclient -c
 
-# for home workstation, automatic
-exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x1440 --rotate normal --output DP1 --mode 2560x1440 --pos 408x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+# Start up with an auto monitor config
+exec xrandr --auto
 
-set $monitor_config Config monitors: [w]ork [h]ome [a]uto
+# Set background after monitor config
+exec xsetroot -solid "#111111"
+
+set $monitor_config Config monitors: [o]ne [t]wo [a]uto
 bindsym $mod+Shift+m mode "$monitor_config"
 
 mode "$monitor_config" {
-     # w for office workstation
-     bindsym w exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output DP2-1 --off --output DP2-2 --mode 2560x1440 --pos 1928x0 --rotate normal --output DP2-3 --off --output HDMI2 --off --output HDMI1 --off --output DP2 --off
-     # h for home workstation
-     bindsym h exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x1440 --rotate normal --output DP1 --mode 2560x1440 --pos 408x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+     # o for one monitor -- external only
+     bindsym o exec xrandr --output VIRTUAL1 --off --output eDP1 --off --output DP1 --mode 2560x1440 --pos 0x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
+     # t for two monitors -- external and interal
+     bindsym t exec xrandr --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x1440 --rotate normal --output DP1 --mode 2560x1440 --pos 408x0 --rotate normal --output HDMI2 --off --output HDMI1 --off --output DP2 --off
      bindsym a exec xrandr --auto
 
      # Back to normal mode
