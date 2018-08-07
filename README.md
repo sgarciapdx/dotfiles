@@ -27,3 +27,4 @@ ln -s /path/to/repo/dotfile /path/to/home/dotfile
 - some i3 stuff is hardware-specific (batteries, etc.), YMMV
 - ssh config requires OpenSSH 7.2 or newer for AddKeysToAgent
 - `00-keyboard.conf` changes CapsLock to Ctrl and goes in /etc/X11/xorg.conf.d (root:root)
+- `99-monitor-backlight.conf` sets up a generic backlight for use by xbacklight and goes in /etc/X11/xorg.conf.d (root:root)
