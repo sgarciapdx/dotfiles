@@ -9,7 +9,7 @@ Vim configs live [elsewhere](https://github.com/sgarciapdx/vim-config).
 
 ## required packages for i3 stuff:
 ```
-i3 i3status dunst xbacklight network-manager-applet
+i3 i3status i3lock dunst xbacklight network-manager-applet
 ```
 
 ## nice-to-haves:
